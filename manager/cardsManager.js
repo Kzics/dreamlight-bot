@@ -62,10 +62,10 @@ function addCardToUser(userId, card) {
     saveUserCollections(collections);
 }
 
-/*function getUserCards(userId) {
+function getUserCards(userId) {
     const collections = loadUserCollections();
     return collections[userId]?.cards || [];
-}*/
+}
 function isNewCard(userId, cardName) {
     const collections = loadUserCollections();
     console.log(collections)
@@ -87,6 +87,25 @@ function isNewCard(userId, cardName) {
 
     return true;
 }
+
+function removeCardFromUser(userId, cardName) {
+    const collections = loadUserCollections();
+
+    if (!collections[userId]) {
+        throw new Error(`L'utilisateur avec l'ID ${userId} n'existe pas.`);
+    }
+
+    const userCards = collections[userId].cards;
+    const cardIndex = userCards.findIndex(card => card.name === cardName);
+
+    if (cardIndex === -1) {
+        throw new Error(`La carte avec le nom ${cardName} n'existe pas pour l'utilisateur ${userId}.`);
+    }
+
+    userCards.splice(cardIndex, 1);
+    saveUserCollections(collections);
+}
+
 
 
 function getUserCardCounts(userId) {
@@ -173,9 +192,11 @@ module.exports = {
     addCardToCollection,
     addCardToUser,
     isNewCard,
+    getUserCards,
     getUserCardCounts,
     filterUserCards,
     updateCardTotals,
     getCardTotals,
-    loadCardTotals
+    loadCardTotals,
+    removeCardFromUser
 };

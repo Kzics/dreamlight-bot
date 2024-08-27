@@ -7,8 +7,9 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 client.cooldowns = new Map();
+client.tradeData = new Map()
 
-const rest = new REST({ version: '10' }).setToken("MTI3NzM1NTY2NjI3MjQxOTg3MA.GOKd_V.GomaUrjqo-y4RabqbH0kcv_WO3LsEdFreFNjJI");
+const rest = new REST({ version: '10' }).setToken("MTI3NzM1NTY2NjI3MjQxOTg3MA.GA44HA.eTbO4DDXw_hb3kcTzQej4R0tl0yRlJYBmH7B60");
 
 (async () => {
     await loadCommands(client);
@@ -32,4 +33,4 @@ const rest = new REST({ version: '10' }).setToken("MTI3NzM1NTY2NjI3MjQxOTg3MA.GO
 
 
 
-client.login("MTI3NzM1NTY2NjI3MjQxOTg3MA.GOKd_V.GomaUrjqo-y4RabqbH0kcv_WO3LsEdFreFNjJI").then(r => console.log("Successfully connected"));
+client.login("MTI3NzM1NTY2NjI3MjQxOTg3MA.GA44HA.eTbO4DDXw_hb3kcTzQej4R0tl0yRlJYBmH7B60").then(r => console.log("Successfully connected"));
