@@ -40,5 +40,11 @@
     "rarity": "Commune",
     "description": "Woody Légendaire",
     "name": "Woody"
+  },
+  {
+    "url": "https://cdn.discordapp.com/attachments/1277355567748218997/1278080750251544619/Cartemodele_1_8.png?ex=66cf80f4&is=66ce2f74&hm=c5a46a67199cde0ee444f15d4caee9e0e5eb95f0353fa5d7665356eeea92c074&",
+    "rarity": "Commune",
+    "description": "Une carte de raiponce",
+    "name": "Raiponce"
   }
 ]

@@ -2,7 +2,6 @@ const { ButtonBuilder, ButtonStyle, ActionRowBuilder, StringSelectMenuBuilder, E
 const { getUserCards, getUserCardCounts, removeCardFromUser, addCardToUser, addCardToCollection, updateCardTotals} = require("../manager/cardsManager");
 const { createCardEmbed } = require("../manager/embedsManager");
 
-const tradeData = new Map();
 
 module.exports = {
     name: 'interactionCreate',
@@ -53,10 +52,20 @@ module.exports = {
             const userId = interaction.user.id;
             const userCards = getUserCards(userId);
             const userCardCounts = getUserCardCounts(userId);
-            if(!(interaction.customId === "choose_trade_card")) return
+            if(!(interaction.customId === "choose_trade_card")) {
+                return
+            }
 
             const selectedCardIndex = parseInt(interaction.values[0], 10);
             const selectedCard = userCards[selectedCardIndex];
+            if(!updateTradeByRecipient(interaction.client.tradeData, userId, selectedCard)){
+                await interaction.reply({
+                    embeds: [new EmbedBuilder().setColor('#FF0000').setTitle("Ce n'est pas votre échange !")],
+                    ephemeral: true
+                })
+                return
+            }
+
 
             if (selectedCard) {
                 const selectedCardEmbed = createCardEmbed(selectedCard, userCardCounts, interaction);
@@ -78,8 +87,7 @@ module.exports = {
                 })
 
 
-
-
+                console.log(interaction.client.tradeData)
             } else {
                 await interaction.update({
                     content: 'Carte invalide sélectionnée.',
@@ -88,7 +96,12 @@ module.exports = {
                 });
             }
         } else if (interaction.isButton()) {
+            if(interaction.customId === "next" || interaction.customId === "previous") return
             const tradeInfo = interaction.client.tradeData.get(interaction.user.id);
+            console.log(tradeInfo)
+
+
+            //TODO AUCUNE DEMANDE
 
             if (!tradeInfo) {
                 await interaction.reply({
@@ -98,35 +111,26 @@ module.exports = {
                 return;
             }
 
-            const { offeredCard, targetUser } = tradeInfo;
             const senderId = interaction.user.id;
-            const recipientId = targetUser;
+            const recipientId = tradeInfo.recipient;
 
             if (interaction.customId === 'accept_trade') {
-                const recipientCards = getUserCards(recipientId);
-                const selectedCard = recipientCards.find(card => card.name === offeredCard.name);
+                removeCardFromUser(senderId, tradeInfo.offer.name);
+                removeCardFromUser(recipientId, tradeInfo.receiving.name);
 
-                if (selectedCard) {
-                    removeCardFromUser(senderId, offeredCard);
-                    removeCardFromUser(recipientId, selectedCard);
-                    addCardToUser(senderId, selectedCard);
-                    addCardToUser(recipientId, offeredCard);
+                addCardToUser(senderId, tradeInfo.receiving);
+                addCardToUser(recipientId, tradeInfo.offer);
 
-                    await interaction.update({
-                        content: 'Échange accepté ! Les cartes ont été échangées.',
-                        components: [],
-                        ephemeral: true
-                    });
-                    await interaction.channel.send({
-                        content: `L'échange entre <@${senderId}> et <@${recipientId}> a été accepté et les cartes ont été échangées.`
-                    });
-                } else {
-                    await interaction.update({
-                        content: 'Aucune carte valide trouvée pour l\'échange.',
-                        components: [],
-                        ephemeral: true
-                    });
-                }
+                await interaction.update({
+                    content: 'Échange accepté ! Les cartes ont été échangées.',
+                    components: [],
+                    ephemeral: true
+                });
+
+                await interaction.channel.send({
+                    content: `L'échange entre <@${senderId}> et <@${recipientId}> a été accepté et les cartes ont été échangées.`
+                });
+
             } else if (interaction.customId === 'refuse_trade') {
                 await interaction.update({
                     content: 'Vous avez refusé l\'échange.',
@@ -138,8 +142,17 @@ module.exports = {
                 });
             }
 
-            // Nettoie les données de trade
-            tradeData.delete(senderId);
+            interaction.client.tradeData.delete(senderId);
         }
     }
 };
+function updateTradeByRecipient(tradeData, targetId, receivingCard) {
+    for (let [initiatorId, trade] of tradeData.entries()) {
+        if (trade.recipient === targetId) {
+            tradeData.set(initiatorId, { offer: trade.offer, recipient: trade.recipient, receiving: receivingCard });
+            console.log(`Trade modifié pour initiatorId: ${initiatorId}`);
+            return true
+        }
+    }
+    return false
+}

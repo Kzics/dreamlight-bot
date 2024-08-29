@@ -26,7 +26,6 @@ module.exports = {
 
         let currentIndex = 0;
 
-        // Obtenir les informations de compte utilisateur
         const userCardCounts = getUserCardCounts(userId);
 
         const generateCardEmbed = (index) => {
@@ -45,10 +44,10 @@ module.exports = {
                         .setStyle(ButtonStyle.Primary)
                         .setDisabled(index === filteredCards.length - 1)
                 );
-            return { embeds: [cardEmbed], components: [row] };
+            return { embeds: [cardEmbed], components: [row], ephemeral: false };
         };
 
-        const message = await interaction.reply({ ...generateCardEmbed(currentIndex), ephemeral: true });
+        const message = await interaction.reply({ ...generateCardEmbed(currentIndex), ephemeral: false });
 
         const collector = message.createMessageComponentCollector({ time: 60000 });
 

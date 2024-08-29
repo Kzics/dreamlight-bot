@@ -3,7 +3,6 @@ const { getUserCards, removeCardFromUser, addCardToUser, getUserCardCounts } = r
 const { createCardEmbed } = require("../manager/embedsManager");
 
 
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('echange')
@@ -97,7 +96,8 @@ module.exports = {
 
         interaction.client.tradeData.set(sender.id, {
             offer: offeredCard,
-            recipient : recipient
+            recipient: recipient.id,
+            receiving: undefined
         })
     }
 };
