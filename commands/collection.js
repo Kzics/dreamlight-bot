@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require("discord.js");
 const { createCardEmbed } = require("../manager/embedsManager");
 const { filterUserCards, getUserCardCounts } = require("../manager/cardsManager");
 
@@ -20,7 +20,17 @@ module.exports = {
         const filteredCards = filterUserCards(userId, { name, rarity });
 
         if (filteredCards.length === 0) {
-            await interaction.reply({ content: 'Aucune carte ne correspond à vos critères.', ephemeral: true });
+            await interaction.reply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setColor('#FF0000')
+                        .setTitle('Aucune carte trouvée')
+                        .setDescription('Aucune carte ne correspond à vos critères de recherche.')
+                        .setTimestamp()
+                        .setFooter({ text: 'Essayez avec d\'autres critères.' })
+                ],
+                ephemeral: true
+            });
             return;
         }
 
@@ -30,7 +40,8 @@ module.exports = {
 
         const generateCardEmbed = (index) => {
             const card = filteredCards[index];
-            const cardEmbed = createCardEmbed(card, userCardCounts, interaction); // Passer tous les paramètres nécessaires
+            const cardEmbed = createCardEmbed(card, userCardCounts, interaction);
+
             const row = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
@@ -44,7 +55,11 @@ module.exports = {
                         .setStyle(ButtonStyle.Primary)
                         .setDisabled(index === filteredCards.length - 1)
                 );
-            return { embeds: [cardEmbed], components: [row], ephemeral: false };
+
+            return {
+                embeds: [cardEmbed],
+                components: [row]
+            };
         };
 
         const message = await interaction.reply({ ...generateCardEmbed(currentIndex), ephemeral: false });
@@ -57,6 +72,7 @@ module.exports = {
             } else if (i.customId === 'next') {
                 currentIndex = Math.min(currentIndex + 1, filteredCards.length - 1);
             }
+
             await i.update(generateCardEmbed(currentIndex));
         });
 

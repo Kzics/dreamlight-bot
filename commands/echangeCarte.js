@@ -2,7 +2,6 @@ const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ButtonBu
 const { getUserCards, removeCardFromUser, addCardToUser, getUserCardCounts } = require("../manager/cardsManager");
 const { createCardEmbed } = require("../manager/embedsManager");
 
-
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('echange')
@@ -19,23 +18,70 @@ module.exports = {
         const sender = interaction.user;
         const recipient = interaction.options.getUser('utilisateur');
         const offeredCardName = interaction.options.getString('carte');
-        const channel = interaction.channel;
+
+        if (interaction.client.tradeData.has(sender.id)) {
+            const ongoingTradeEmbed = new EmbedBuilder()
+                .setColor('#FF0000')
+                .setTitle('Échange en cours')
+                .setDescription('Vous avez déjà une demande d\'échange en cours. Veuillez attendre la fin de l\'échange actuel avant de proposer un nouvel échange.')
+                .setFooter({ text: 'Gestion des échanges' })
+                .setTimestamp();
+
+            await interaction.reply({ embeds: [ongoingTradeEmbed], ephemeral: true });
+            return;
+        }
+
+        const recipientTrade = [...interaction.client.tradeData.values()].find(trade => trade.recipient === recipient.id);
+        if (recipientTrade) {
+            const recipientOngoingTradeEmbed = new EmbedBuilder()
+                .setColor('#FF0000')
+                .setTitle('Échange en cours pour le destinataire')
+                .setDescription(`${recipient.username} a déjà une demande d'échange en cours. Veuillez attendre que cet échange soit terminé ou choisir un autre utilisateur.`)
+                .setFooter({ text: 'Gestion des échanges' })
+                .setTimestamp();
+
+            await interaction.reply({ embeds: [recipientOngoingTradeEmbed], ephemeral: true });
+            return;
+        }
+
+        if (recipient.id === sender.id) {
+            const selfTradeEmbed = new EmbedBuilder()
+                .setColor('#FF0000')
+                .setTitle('Erreur d\'échange')
+                .setDescription('Vous ne pouvez pas faire un échange avec vous-même.')
+                .setFooter({ text: 'Veuillez sélectionner un autre utilisateur pour l\'échange.' })
+                .setTimestamp();
+
+            await interaction.reply({ embeds: [selfTradeEmbed], ephemeral: true });
+            return;
+        }
 
         const senderCards = getUserCards(sender.id);
         const offeredCard = senderCards.find(card => card.name === offeredCardName);
 
         if (!offeredCard) {
-            await interaction.reply({content: 'Vous ne possédez pas cette carte.', ephemeral: true});
+            const noCardEmbed = new EmbedBuilder()
+                .setColor('#FF0000')
+                .setTitle('Carte non trouvée')
+                .setDescription('Vous ne possédez pas cette carte.')
+                .setFooter({ text: 'Veuillez vérifier votre collection.' })
+                .setTimestamp();
+
+            await interaction.reply({ embeds: [noCardEmbed], ephemeral: true });
             return;
         }
 
         const recipientCards = getUserCards(recipient.id);
 
         if (recipientCards.length === 0) {
-            await interaction.reply({
-                content: `${recipient.username} ne possède aucune carte à échanger.`,
-                ephemeral: true
-            });
+            const noRecipientCardsEmbed = new EmbedBuilder()
+                .setColor('#FF0000')
+                .setTitle('Aucune carte disponible')
+                .setDescription(`${recipient.username} ne possède aucune carte à échanger.`)
+                .setFooter({ text: 'Impossible de procéder à l\'échange.' })
+                .setTimestamp();
+
+            await interaction.reply({ embeds: [noRecipientCardsEmbed], ephemeral: true });
             return;
         }
 
@@ -80,13 +126,20 @@ module.exports = {
         const userCardCounts = getUserCardCounts(sender.id);
         const offeredCardEmbed = createCardEmbed(offeredCard, userCardCounts, interaction);
 
-        await interaction.reply({content: `Vous avez envoyé une demande d'échange à ${recipient}.`, ephemeral: true});
+        const tradeRequestEmbed = new EmbedBuilder()
+            .setColor('#00FF00')
+            .setTitle('Demande d\'échange envoyée')
+            .setDescription(`Vous avez envoyé une demande d'échange à ${recipient.username}.`)
+            .setFooter({ text: 'En attente de la réponse.' })
+            .setTimestamp();
+
+        await interaction.reply({ embeds: [tradeRequestEmbed], ephemeral: true });
 
         const selectMenu = generateSelectMenu(currentPage);
         const buttons = generateButtons();
 
         await interaction.channel.send({
-            content: recipient.toString(),
+            content: `${recipient}`,
             embeds: [offeredCardEmbed],
             components: [
                 new ActionRowBuilder().addComponents(selectMenu),
@@ -98,6 +151,6 @@ module.exports = {
             offer: offeredCard,
             recipient: recipient.id,
             receiving: undefined
-        })
+        });
     }
 };
