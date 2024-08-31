@@ -9,9 +9,9 @@ module.exports = {
         .setDescription('Permet de tirer une nouvelle carte'),
     async execute(interaction) {
         const rates = {
-            'Legendaire': 0.33,
-            'Rare': 0.33,
-            'Commune': 0.33
+            'Legendaire': 0.05,
+            'Rare': 0.25,
+            'Commune': 0.70
         };
 
         const randomValue = Math.random();

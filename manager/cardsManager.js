@@ -17,6 +17,7 @@ function readCards() {
     const data = fs.readFileSync(cardsFilePath);
     return JSON.parse(data);
 }
+
 function writeCards(cards) {
     fs.writeFileSync(cardsFilePath, JSON.stringify(cards, null, 2));
 }
@@ -33,6 +34,18 @@ function addCardToCollection(card) {
 
     cards.push(card);
     writeCards(cards);
+}
+
+function removeCardFromCollection(cardName) {
+    const cards = readCards();
+    const updatedCards = cards.filter(card => card.name.toLowerCase() !== cardName.toLowerCase());
+
+    if (updatedCards.length === cards.length) {
+        return false; // La carte n'existait pas
+    }
+
+    writeCards(updatedCards);
+    return true; // Carte supprimée
 }
 
 function loadUserCollections() {
@@ -66,24 +79,20 @@ function getUserCards(userId) {
     const collections = loadUserCollections();
     return collections[userId]?.cards || [];
 }
+
 function isNewCard(userId, cardName) {
     const collections = loadUserCollections();
-    console.log(collections)
-    console.log(userId)
     const userCollection = collections[userId];
-    if(!userCollection) return true
-    console.log(userCollection)
+
+    if (!userCollection) return true;
 
     const cardsList = userCollection.cards;
 
     for (let card of cardsList) {
-        console.log(card.name)
         if (card.name === cardName) {
-            console.log("ok")
             return false;
         }
     }
-    console.log("weird")
 
     return true;
 }
@@ -106,7 +115,16 @@ function removeCardFromUser(userId, cardName) {
     saveUserCollections(collections);
 }
 
+function removeCardFromAllUsers(cardName) {
+    const collections = loadUserCollections();
 
+    for (const userId in collections) {
+        const userCards = collections[userId].cards;
+        collections[userId].cards = userCards.filter(card => card.name.toLowerCase() !== cardName.toLowerCase());
+    }
+
+    saveUserCollections(collections);
+}
 
 function getUserCardCounts(userId) {
     const collections = loadUserCollections();
@@ -153,6 +171,7 @@ function filterUserCards(userId, { name, rarity }) {
             (!rarity || card.rarity.toLowerCase() === rarity.toLowerCase());
     });
 }
+
 function loadCardTotals() {
     if (fs.existsSync(cardsFilePath)) {
         const allCards = JSON.parse(fs.readFileSync(cardsFilePath, 'utf8'));
@@ -184,10 +203,10 @@ function getCardTotals() {
 
 function updateCardTotals(rarity) {
     if (cardTotals[rarity] !== undefined) {
-
         cardTotals[rarity] = cardTotals[rarity] + 1;
     }
 }
+
 module.exports = {
     addCardToCollection,
     addCardToUser,
@@ -198,5 +217,7 @@ module.exports = {
     updateCardTotals,
     getCardTotals,
     loadCardTotals,
-    removeCardFromUser
+    removeCardFromUser,
+    removeCardFromCollection,    // Nouvelle fonction
+    removeCardFromAllUsers       // Nouvelle fonction
 };

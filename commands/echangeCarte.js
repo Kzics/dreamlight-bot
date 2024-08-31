@@ -148,6 +148,7 @@ module.exports = {
         });
 
         interaction.client.tradeData.set(sender.id, {
+            sender: sender.id,
             offer: offeredCard,
             recipient: recipient.id,
             receiving: undefined

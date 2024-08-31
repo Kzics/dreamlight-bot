@@ -1,11 +1,8 @@
 const { EmbedBuilder } = require('discord.js');
-const fs = require('fs');
-const path = require('path');
-const {isNewCard, getCardTotals} = require('../manager/cardsManager')
-
+const { isNewCard, getCardTotals } = require('../manager/cardsManager');
+const {getUserCards} = require("./cardsManager");
 
 function createCardEmbed(card, userCardCounts, interaction) {
-    console.log(userCardCounts)
     let color;
 
     switch (card.rarity) {
@@ -22,12 +19,15 @@ function createCardEmbed(card, userCardCounts, interaction) {
             color = '#FFFFFF';
     }
 
-    console.log("Card name : " + card.name)
     const isNew = isNewCard(interaction.user.id, card.name);
-    console.log(isNew)
-    const title =  `${card.name} ${isNew ? "- NOUVEAU": ""}`;
+    const title =  `${card.name} ${isNew ? "- NOUVEAU" : ""}`;
 
-    const total = getCardTotals()
+    const total = getCardTotals();
+
+    // Calculer le nombre de doublons pour cette carte spécifique
+    const allUserCards = getUserCards(interaction.user.id);
+    const duplicateCount = allUserCards.filter(c => c.name === card.name).length;
+    const duplicateText = duplicateCount > 1 ? `**${duplicateCount} doublon(s)**` : '';
     const fields = [
         {
             name: "Commune",
@@ -52,11 +52,10 @@ function createCardEmbed(card, userCardCounts, interaction) {
         .setImage(card.url)
         .addFields(
             { name: `Obtention`, value: `${toTimeStamp(card.date)}`, inline: false },
-            {name: "Propriétaire", value: `${interaction.user.toString()}`, inline: false},
-
+            { name: "Propriétaire", value: `${interaction.user.toString()}`, inline: false },
             ...fields
         )
-        .setDescription(card.description || 'Pas de description disponible.')
+        .setDescription(`${card.description || 'Pas de description disponible.'}\n${duplicateText}`)
         .setFooter({ text: `Type: ${card.rarity}` })
         .setTimestamp();
 }

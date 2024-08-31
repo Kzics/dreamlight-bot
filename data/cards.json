@@ -1,50 +1,92 @@
 [
   {
-    "url": "SS",
-    "rarity": "SS",
-    "description": "SS",
-    "cardName": "SS"
-  },
-  {
-    "url": "https://cdn.discordapp.com/attachments/1277303409225109557/1277365194129149982/Flynn.png?ex=66cd8f4a&is=66cc3dca&hm=991c19b1c46ef5cceefef084c187b23be8fd2a7a6c173b25dd22d99fbf47e2c1&",
-    "rarity": "Legendaire",
-    "description": "Une simple carte légendaire de Flynn Rider",
-    "name": "Flynn Rider"
-  },
-  {
-    "url": "https://cdn.discordapp.com/attachments/1277303409225109557/1277618577385717916/Cartemodele_1_1.png?ex=66cdd285&is=66cc8105&hm=05486de2b9e70c8496f229ef61c7969ef0c6ac0e74ecb3694cab0c25953897a0&",
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779304276267089/Cartemodele_1_1.png?ex=66d20b88&is=66d0ba08&hm=c382c9214d93e282e0c1a322b92dbded1db54d6f23225b677cf8129188b9b835&=&format=webp&quality=lossless&width=475&height=662",
     "rarity": "Commune",
-    "description": "Une simple carte de Woody",
-    "name": "Woody (Saison 1)"
+    "description": "Woody - Commune",
+    "name": "Woody"
   },
   {
-    "url": "https://cdn.discordapp.com/attachments/1277303409225109557/1277618638525825085/anxiete_14.png?ex=66cdd294&is=66cc8114&hm=f7885e5fe63be74f9798c3cde425ade7a8d07d5713be5049a169ea3990fbf46c&",
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779327864897556/Cartemodele_1_2.png?ex=66d20b8e&is=66d0ba0e&hm=aec26938ec495b9bb3110241a16af7d11feec8341fadff56d568785e83238d22&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Commune",
+    "description": "Jessy - Commune",
+    "name": "Jessy"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779349876871218/Cartemodele_1_3.png?ex=66d20b93&is=66d0ba13&hm=11f874625a4f105200e297c48ffbb380e281ce3eeb685e1d2105c537d8ab4906&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Commune",
+    "description": "Buzz l'éclair - Commune",
+    "name": "Buzz"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779407678443521/Cartemodele_1_4.png?ex=66d20ba1&is=66d0ba21&hm=c9adf5f2fbdf60a95f76bec2a4e5374de6047e190f29e54ab9c5d2898a64a6f8&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Commune",
+    "description": "Joie - Commune",
+    "name": "Joie"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779408165113856/Cartemodele_1_5.png?ex=66d20ba1&is=66d0ba21&hm=a742507cfc293777884243a01a005758ed60f70901f2e72516761fd29d969df2&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Commune",
+    "description": "Dégoût - Commune",
+    "name": "Commune"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779920012546180/anxiete_1.png?ex=66d20c1b&is=66d0ba9b&hm=b4efd73f4d72f7e9996f0eaf76bc3ddae1e441359ae7dcbbe62a4b810ba2e0ed&=&format=webp&quality=lossless&width=475&height=662",
     "rarity": "Rare",
-    "description": "Une simple carte du monde de Ralph",
-    "name": "Le monde De Ralph"
+    "description": "Bruno - Rare",
+    "name": "Bruno"
   },
   {
-    "url": "https://cdn.discordapp.com/attachments/1277355567748218997/1277716904475361292/Cartemodele_1_1.png?ex=66ce2e18&is=66ccdc98&hm=64d5e95159ca7ff0241b49af59987c1a16d8c8d7ece5122998cf74bd81cff5e0&",
-    "rarity": "Commune",
-    "description": "Woody Légendaire",
-    "name": "Woody"
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779920725708911/anxiete_2.png?ex=66d20c1b&is=66d0ba9b&hm=d1b54480a4e26461a99f4db07402d8ae6413e02bf8894779f18a9935b71f7539&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Rare",
+    "description": "Léon - Rare",
+    "name": "Léon"
   },
   {
-    "url": "https://cdn.discordapp.com/attachments/1277303409225109557/1277365194129149982/Flynn.png?ex=66cd8f4a&is=66cc3dca&hm=991c19b1c46ef5cceefef084c187b23be8fd2a7a6c173b25dd22d99fbf47e2c1&",
-    "rarity": "Commune",
-    "description": "Image de test",
-    "name": "Image test"
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779921296003234/anxiete_3.png?ex=66d20c1b&is=66d0ba9b&hm=c54c6d431857922cf54c186f7677e88157e63ac71636ad803cf1b40309483e2f&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Rare",
+    "description": "EVE - Rare",
+    "name": "EVE"
   },
   {
-    "url": "https://cdn.discordapp.com/attachments/1277355567748218997/1277716904475361292/Cartemodele_1_1.png?ex=66ce2e18&is=66ccdc98&hm=64d5e95159ca7ff0241b49af59987c1a16d8c8d7ece5122998cf74bd81cff5e0&",
-    "rarity": "Commune",
-    "description": "Woody Légendaire",
-    "name": "Woody"
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779979844292640/anxiete_13.png?ex=66d20c29&is=66d0baa9&hm=195468b334546e797112e3b1273199ce1a152f6bb90a706a1cc5f157e119b604&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Rare",
+    "description": "Mulan - Rare",
+    "name": "MULAN"
   },
   {
-    "url": "https://cdn.discordapp.com/attachments/1277355567748218997/1278080750251544619/Cartemodele_1_8.png?ex=66cf80f4&is=66ce2f74&hm=c5a46a67199cde0ee444f15d4caee9e0e5eb95f0353fa5d7665356eeea92c074&",
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779979273998346/anxiete_12.png?ex=66d20c29&is=66d0baa9&hm=3b973bf8c0224a0d8e178b7d484de90072bcfc94e5fd9cd7f42c84de68af7243&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Rare",
+    "description": "Leroy - Rare",
+    "name": "LEROY"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278780101659721764/anxiete_2.png?ex=66d20c46&is=66d0bac6&hm=30e65fa6fe43c871c1ca8daef0b8e43c496a819da6e298c545b39bc65327e52d&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Legendaire",
+    "description": "Lumiére - Legendaire",
+    "name": "Lumiere"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278780103769456681/anxiete.png?ex=66d20c47&is=66d0bac7&hm=f741b5a551b4b3986d29ab4a40fabce6d3ea79af3a31c5b0e25b1a1734ea9ec9&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Legendaire",
+    "description": "Elsa - Legendaire",
+    "name": "ELSA"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779922227138631/anxiete_5.png?ex=66d4065c&is=66d2b4dc&hm=4633c100313509ff5fe4a99c2bc1853181a3cbd9e7c45ea51be7ae6b1f7933c1&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Rare",
+    "description": "Jack - Rare",
+    "name": "Jack"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779774868787240/Cartemodele_1_23.png?ex=66d40638&is=66d2b4b8&hm=05ac96d1b52a896f04a9530eb08e72f831d9f7ad78b094ca4edbb77f181edf90&=&format=webp&quality=lossless&width=475&height=662",
     "rarity": "Commune",
-    "description": "Une carte de raiponce",
-    "name": "Raiponce"
+    "description": "Milo - Commune",
+    "name": "Milo"
+  },
+  {
+    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278780102926270474/anxiete_4.png?ex=66d40687&is=66d2b507&hm=b7644341be928413b4a7e014fc80bb6df069ce8b48b0694ba9681dbb75e741f3&=&format=webp&quality=lossless&width=475&height=662",
+    "rarity": "Legendaire",
+    "description": "Mushu - Legendaire",
+    "name": "Mushu"
   }
 ]
