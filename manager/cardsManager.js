@@ -42,11 +42,11 @@ function removeCardFromCollection(cardName) {
     const updatedCards = cards.filter(card => card.name.toLowerCase() !== cardName.toLowerCase());
 
     if (updatedCards.length === cards.length) {
-        return false; // La carte n'existait pas
+        return false;
     }
 
     writeCards(updatedCards);
-    return true; // Carte supprimée
+    return updatedCards[0].rarity; // Carte supprimée
 }
 
 function loadUserCollections() {
@@ -208,6 +208,12 @@ function updateCardTotals(rarity) {
     }
 }
 
+function removeCardTotals(rarity){
+    if (cardTotals[rarity] !== undefined) {
+        cardTotals[rarity] = cardTotals[rarity] - 1;
+    }
+}
+
 module.exports = {
     addCardToCollection,
     addCardToUser,
@@ -219,6 +225,7 @@ module.exports = {
     getCardTotals,
     loadCardTotals,
     readCards,
+    removeCardTotals,
     removeCardFromUser,
     removeCardFromCollection,    // Nouvelle fonction
     removeCardFromAllUsers       // Nouvelle fonction

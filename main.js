@@ -9,7 +9,7 @@ client.commands = new Collection()
 client.cooldowns = new Map()
 client.tradeData = new Map()
 
-const rest = new REST({ version: '10' }).setToken("MTI3NzM1NTY2NjI3MjQxOTg3MA.GpK2G-.NrPW9XU_wLQ-Pc_4Y26ZS-pl2ZIBSyemmupc_g");
+const rest = new REST({ version: '10' }).setToken("MTI3NzM1NTY2NjI3MjQxOTg3MA.G4dlib.jslIZdz07HnZ_xtUNuoeBphzV9H4HdFNT-YAu4");
 
 (async () => {
     await loadCommands(client);
@@ -33,4 +33,4 @@ const rest = new REST({ version: '10' }).setToken("MTI3NzM1NTY2NjI3MjQxOTg3MA.Gp
 
 
 
-client.login("MTI3NzM1NTY2NjI3MjQxOTg3MA.GpK2G-.NrPW9XU_wLQ-Pc_4Y26ZS-pl2ZIBSyemmupc_g").then(r => console.log("Successfully connected"));
+client.login("MTI3NzM1NTY2NjI3MjQxOTg3MA.G4dlib.jslIZdz07HnZ_xtUNuoeBphzV9H4HdFNT-YAu4").then(r => console.log("Successfully connected"));

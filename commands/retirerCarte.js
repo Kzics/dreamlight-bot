@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { getUserCards, removeCardFromUser, getAllUsers, updateCardCollection, removeCardFromCollection,
-    removeCardFromAllUsers
+    removeCardFromAllUsers, removeCardTotals
 } = require("../manager/cardsManager");
 
 module.exports = {
@@ -22,6 +22,7 @@ module.exports = {
         }
 
         removeCardFromAllUsers(cardName);
+        removeCardTotals(cardRemoved)
 
         await interaction.reply({ content: `La carte \`${cardName}\` a été supprimée du jeu et de toutes les collections d'utilisateurs.`, ephemeral: true });
     }
