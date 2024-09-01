@@ -1,57 +1,16 @@
 [
   {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779304276267089/Cartemodele_1_1.png?ex=66d20b88&is=66d0ba08&hm=c382c9214d93e282e0c1a322b92dbded1db54d6f23225b677cf8129188b9b835&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Commune",
-    "description": "Woody - Commune",
-    "name": "Woody"
-  },
-  {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779327864897556/Cartemodele_1_2.png?ex=66d20b8e&is=66d0ba0e&hm=aec26938ec495b9bb3110241a16af7d11feec8341fadff56d568785e83238d22&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Commune",
-    "description": "Jessy - Commune",
-    "name": "Jessy"
-  },
-  {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779349876871218/Cartemodele_1_3.png?ex=66d20b93&is=66d0ba13&hm=11f874625a4f105200e297c48ffbb380e281ce3eeb685e1d2105c537d8ab4906&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Commune",
-    "description": "Buzz l'éclair - Commune",
-    "name": "Buzz"
-  },
-  {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779407678443521/Cartemodele_1_4.png?ex=66d20ba1&is=66d0ba21&hm=c9adf5f2fbdf60a95f76bec2a4e5374de6047e190f29e54ab9c5d2898a64a6f8&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Commune",
-    "description": "Joie - Commune",
-    "name": "Joie"
-  },
-  {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779408165113856/Cartemodele_1_5.png?ex=66d20ba1&is=66d0ba21&hm=a742507cfc293777884243a01a005758ed60f70901f2e72516761fd29d969df2&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Commune",
-    "description": "Dégoût - Commune",
-    "name": "Commune"
-  },
-  {
     "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779920012546180/anxiete_1.png?ex=66d20c1b&is=66d0ba9b&hm=b4efd73f4d72f7e9996f0eaf76bc3ddae1e441359ae7dcbbe62a4b810ba2e0ed&=&format=webp&quality=lossless&width=475&height=662",
     "rarity": "Rare",
     "description": "Bruno - Rare",
-    "name": "Bruno"
+    "name": "Bruno",
+    "date": "2024-09-01T12:23:37.951Z"
   },
   {
     "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779920725708911/anxiete_2.png?ex=66d20c1b&is=66d0ba9b&hm=d1b54480a4e26461a99f4db07402d8ae6413e02bf8894779f18a9935b71f7539&=&format=webp&quality=lossless&width=475&height=662",
     "rarity": "Rare",
     "description": "Léon - Rare",
     "name": "Léon"
-  },
-  {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779921296003234/anxiete_3.png?ex=66d20c1b&is=66d0ba9b&hm=c54c6d431857922cf54c186f7677e88157e63ac71636ad803cf1b40309483e2f&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Rare",
-    "description": "EVE - Rare",
-    "name": "EVE"
-  },
-  {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779979844292640/anxiete_13.png?ex=66d20c29&is=66d0baa9&hm=195468b334546e797112e3b1273199ce1a152f6bb90a706a1cc5f157e119b604&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Rare",
-    "description": "Mulan - Rare",
-    "name": "MULAN"
   },
   {
     "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779979273998346/anxiete_12.png?ex=66d20c29&is=66d0baa9&hm=3b973bf8c0224a0d8e178b7d484de90072bcfc94e5fd9cd7f42c84de68af7243&=&format=webp&quality=lossless&width=475&height=662",
@@ -72,16 +31,11 @@
     "name": "ELSA"
   },
   {
-    "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779922227138631/anxiete_5.png?ex=66d4065c&is=66d2b4dc&hm=4633c100313509ff5fe4a99c2bc1853181a3cbd9e7c45ea51be7ae6b1f7933c1&=&format=webp&quality=lossless&width=475&height=662",
-    "rarity": "Rare",
-    "description": "Jack - Rare",
-    "name": "Jack"
-  },
-  {
     "url": "https://media.discordapp.net/attachments/1278779047014436944/1278779774868787240/Cartemodele_1_23.png?ex=66d40638&is=66d2b4b8&hm=05ac96d1b52a896f04a9530eb08e72f831d9f7ad78b094ca4edbb77f181edf90&=&format=webp&quality=lossless&width=475&height=662",
     "rarity": "Commune",
     "description": "Milo - Commune",
-    "name": "Milo"
+    "name": "Milo",
+    "date": "2024-09-01T12:23:09.549Z"
   },
   {
     "url": "https://media.discordapp.net/attachments/1278779047014436944/1278780102926270474/anxiete_4.png?ex=66d40687&is=66d2b507&hm=b7644341be928413b4a7e014fc80bb6df069ce8b48b0694ba9681dbb75e741f3&=&format=webp&quality=lossless&width=475&height=662",

@@ -38,6 +38,7 @@ function addCardToCollection(card) {
 
 function removeCardFromCollection(cardName) {
     const cards = readCards();
+
     const updatedCards = cards.filter(card => card.name.toLowerCase() !== cardName.toLowerCase());
 
     if (updatedCards.length === cards.length) {
@@ -217,6 +218,7 @@ module.exports = {
     updateCardTotals,
     getCardTotals,
     loadCardTotals,
+    readCards,
     removeCardFromUser,
     removeCardFromCollection,    // Nouvelle fonction
     removeCardFromAllUsers       // Nouvelle fonction

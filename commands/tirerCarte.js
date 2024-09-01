@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { createCardEmbed } = require('../manager/embedsManager');
-const cards = require('../data/cards.json');
-const { addCardToUser, getUserCardCounts } = require('../manager/cardsManager');
+const { addCardToUser, getUserCardCounts, readCards } = require('../manager/cardsManager');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -25,16 +24,16 @@ module.exports = {
             rarity = 'Commune';
         }
 
+        // Filtrer uniquement les cartes encore disponibles dans cards.json
+        const cards = readCards()
         const availableCards = cards.filter(card => card.rarity === rarity);
         const drawnCard = availableCards[Math.floor(Math.random() * availableCards.length)];
         drawnCard.date = new Date().toISOString();
-
 
         const userCardCounts = getUserCardCounts(interaction.user.id);
 
         const cardEmbed = createCardEmbed(drawnCard, userCardCounts, interaction);
         addCardToUser(interaction.user.id, drawnCard);
-
 
         await interaction.reply({ embeds: [cardEmbed] });
     },
